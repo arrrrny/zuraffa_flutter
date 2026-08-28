@@ -130,7 +130,6 @@ bool _isTempPath(String p) {
 /// the VPC generators. Both monorepo packages are wired in via path deps so
 /// the fixture mirrors a real Flutter app consuming zuraffa + zuraffa_flutter.
 Future<void> writeFlutterPubspec(VpcWorkspace workspace) async {
-  final coreRoot = _packageRoot('zuraffa');
   final flutterRoot = _packageRoot('zuraffa_flutter');
   final content = '''
 name: zuraffa_vpc_test_app
@@ -142,7 +141,8 @@ dependencies:
   flutter:
     sdk: flutter
   zuraffa:
-    path: ${path.normalize(coreRoot)}
+    hosted: https://pub.zuzu.dev
+    version: ^6.0.0
   zuraffa_flutter:
     path: ${path.normalize(flutterRoot)}
 ''';
