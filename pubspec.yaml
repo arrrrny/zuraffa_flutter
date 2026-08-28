@@ -35,3 +35,6 @@ dev_dependencies:
   analyzer: ^14.0.0
   path: ^1.9.1
 
+dependency_overrides:
+  analyzer: 14.1.0
+  meta: ^1.19.0
