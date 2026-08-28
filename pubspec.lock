@@ -705,10 +705,10 @@ packages:
     dependency: "direct main"
     description:
       name: zuraffa
-      sha256: "3d0eb428b36646c7a15d3c5e8c1496f91a01a61a6249bdfcd3337f280301fd53"
-      url: "https://pub.flutter-io.cn"
+      sha256: "3242d0c24fac17282871d12ad956f9a4762df2ede808d77591f1eb97dc5d87cd"
+      url: "https://pub.zuzu.dev"
     source: hosted
-    version: "6.0.0"
+    version: "6.0.1"
 sdks:
   dart: ">=3.11.0 <4.0.0"
   flutter: ">=3.41.0"
