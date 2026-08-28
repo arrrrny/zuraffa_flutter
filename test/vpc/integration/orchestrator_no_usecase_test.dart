@@ -77,23 +77,20 @@ void main() {
 
       expect(result.success, isTrue);
 
-      // This workspace is a *pure-Dart* fixture (the pubspec written by
-      // `writePubspec` declares no `flutter:` SDK), so per Constitution VII
-      // (Engine Purity) the presenter/controller generators correctly SKIP
-      // output for a pure-Dart target (see #420): both artifacts depend on
-      // `zuraffa_flutter`, which is unavailable here. The presenter's
-      // multi-usecase wiring (fields, methods, and imports for
-      // CheckPermission / RequestPermission / OpenAppSettings) and the
-      // controller's methods are verified in the `zuraffa_flutter` package
-      // — see issue #431.
+      // This workspace is a *Flutter* fixture: `writeFlutterPubspec` declares a
+      // `flutter:` SDK, so per Constitution VII (Engine Purity) the
+      // presenter/controller generators correctly EMIT their output for this
+      // Flutter target. The presenter's multi-usecase wiring (fields, methods,
+      // and imports for CheckPermission / RequestPermission / OpenAppSettings)
+      // and the controller's methods are generated here and verified below.
       final presenterPath =
           '$outputDir/presentation/pages/permissions/permissions_presenter.dart';
       final presenterFile = File(presenterPath);
       expect(
         presenterFile.existsSync(),
-        isFalse,
+        isTrue,
         reason:
-            'pure-Dart target must NOT generate a Flutter presenter '
+            'Flutter target must generate a Flutter presenter '
             '(Constitution VII: Engine Purity)',
       );
 
@@ -102,9 +99,9 @@ void main() {
       final controllerFile = File(controllerPath);
       expect(
         controllerFile.existsSync(),
-        isFalse,
+        isTrue,
         reason:
-            'pure-Dart target must NOT generate a Flutter controller '
+            'Flutter target must generate a Flutter controller '
             '(Constitution VII: Engine Purity)',
       );
 
