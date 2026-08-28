@@ -3,7 +3,7 @@
 - **Slug**: presenter-usecase-usezorphy-partial-emit
 - **Fixed**: 2026-08-28
 - **Assessment**: ./assessment.md
-- **Status**: not-applied
+- **Status**: fixed-upstream (core zuraffa 6.0.2 — PR #554 merged; awaiting pub.dev publish)
 
 ## Summary
 
@@ -27,4 +27,8 @@ This behavior lives in `arrrrny/zuraffa`, **not** in the `zuraffa_flutter` packa
 
 ## Follow-ups
 
-- Fix `PresenterPlugin` in `arrrrny/zuraffa` so `useZorphy=false` emits `Partial<Entity>`; republish; then this transported test passes.
+- DONE in core `arrrrny/zuraffa` 6.0.2 (PR #554 merged; it carries the `useZorphy` fix
+  already on `master` via PR #547). Verified end-to-end: pointing `zuraffa_flutter`
+  at `master` makes `presenter_usecase_test` pass (both sub-tests green).
+- Next (repo owner): publish `6.0.2` to **pub.dev only** (not the zuzu mirror), then
+  point `zuraffa_flutter` at `hosted: https://pub.dev` so this transported test goes green.

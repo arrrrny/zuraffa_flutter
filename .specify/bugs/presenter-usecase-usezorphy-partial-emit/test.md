@@ -2,7 +2,7 @@
 
 - **Slug**: presenter-usecase-usezorphy-partial-emit
 - **Verified**: 2026-08-28
-- **Result**: failed
+- **Result**: fixed-upstream (core zuraffa 6.0.2; pending pub.dev publish + zuraffa_flutter repoint)
 - **Assessment**: ./assessment.md
 - **Fix**: ./fix.md (status: not-applied)
 
@@ -12,12 +12,15 @@
 
 ## Outcome
 
-Still red on the `useZorphy=false should emit Partial<Entity>` sub-test:
+Still red on `master`'s published `6.0.1`, but **fixed upstream**: core `arrrrny/zuraffa`
+PR #547 (shipped in the 6.0.2 release, PR #554) makes `PresenterPlugin` honor
+`useZorphy: false`. Verified by pointing `zuraffa_flutter` at core `master` —
+both sub-tests pass:
 
 ```
-Expected: true
-  Actual: <false>
-useZorphy=false should emit Partial<Entity> for update params
+00:00 +2: All tests passed!
 ```
 
-The fix belongs in core `arrrrny/zuraffa` (`PresenterPlugin`); it cannot be applied in `zuraffa_flutter`. Tracked as issue #9. This test remains a legitimate in-repo guard for the core behavior until core zuraffa is fixed and republished.
+Remaining steps: publish core `6.0.2` to **pub.dev only**, then repoint
+`zuraffa_flutter`'s `zuraffa` dependency to `hosted: https://pub.dev`. After that
+this transported test goes green without further changes here.
