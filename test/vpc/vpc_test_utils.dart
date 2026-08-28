@@ -141,7 +141,7 @@ dependencies:
   flutter:
     sdk: flutter
   zuraffa:
-    hosted: https://pub.zuzu.dev
+    hosted: https://pub.dev
     version: ^6.0.0
   zuraffa_flutter:
     path: ${path.normalize(flutterRoot)}

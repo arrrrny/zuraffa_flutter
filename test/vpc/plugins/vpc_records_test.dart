@@ -13,6 +13,32 @@ void main() {
     workspace = await Directory.systemTemp.createTemp('zuraffa_vpc_records_');
     outputDir = path.join(workspace.path, 'lib', 'src');
     await Directory(outputDir).create(recursive: true);
+
+    // zuraffa 6.1.0's `zfa make` fails fast when the entity source file is
+    // missing (#496): write a minimal `Product` entity stub at the canonical
+    // location the generator probes before running `make`.
+    final entityDir = Directory(
+      path.join(outputDir, 'domain', 'entities', 'product'),
+    );
+    await entityDir.create(recursive: true);
+    await File(path.join(entityDir.path, 'product.dart')).writeAsString('''
+class Product {
+  final String id;
+
+  const Product({required this.id});
+}
+
+class ProductPatch {
+  final String? id;
+
+  const ProductPatch({this.id});
+}
+
+class ProductFields {
+  static const Field<Product, String> id = Field(name: 'id');
+  static const Field<Product, String> slug = Field(name: 'slug');
+}
+''');
     await File(path.join(workspace.path, 'pubspec.yaml')).writeAsString('''
 name: zuraffa_test
 dependencies:
