@@ -92,8 +92,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  zuraffa:
-    path: ${path.normalize(repoRoot)}
+  zuraffa: ^6.0.0
   zuraffa_flutter:
     path: ${path.normalize(path.join(repoRoot, 'zuraffa_flutter'))}
   get_it: ^9.0.0

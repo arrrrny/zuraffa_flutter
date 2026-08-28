@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:path/path.dart' as path;
@@ -65,14 +64,6 @@ String _packageRoot(String pubspecName) {
     final root = _walkToRoot(framePath, pubspecName);
     if (root != null) return root;
   }
-
-  // Strategy 3: resolve from the Dart package config (.dart_tool/package_config.json),
-  // which maps package names to their resolved roots. This covers packages installed
-  // from the pub cache (e.g. a standalone checkout where `zuraffa` is not a sibling
-  // path dependency), which the CWD / stack-trace walks above cannot find.
-  final configRoot = _resolveFromPackageConfig(pubspecName);
-  if (configRoot != null) return configRoot;
-
   throw StateError(
     'cannot locate the $pubspecName package root (CWD='
     '${Directory.current.path})',
@@ -124,50 +115,6 @@ String? _stackTraceSourcePath() {
   return null;
 }
 
-/// Resolves the root directory of the package named [pubspecName] by reading
-/// `.dart_tool/package_config.json` (the Dart package resolution file). This
-/// finds packages installed from the pub cache — including ones whose on-disk
-/// path does not contain their package name (e.g. `zuraffa-6.0.0`) — which the
-/// filesystem walks above cannot locate. Returns null when the config is
-/// missing or the package is not listed.
-String? _resolveFromPackageConfig(String pubspecName) {
-  try {
-    final configPath = Platform.packageConfig ??
-        path.join(Directory.current.path, '.dart_tool', 'package_config.json');
-    final configFile = File(configPath);
-    if (!configFile.existsSync()) return null;
-
-    final decoded = jsonDecode(configFile.readAsStringSync());
-    final packages = (decoded is Map && decoded['packages'] is List)
-        ? decoded['packages'] as List
-        : <dynamic>[];
-    for (final entry in packages) {
-      if (entry is! Map) continue;
-      if (entry['name'] != pubspecName) continue;
-      final rootUri = entry['rootUri'];
-      if (rootUri is! String) return null;
-
-      final base = Uri.parse(path.toUri(configPath).toString());
-      final resolved = base.resolveUri(Uri.parse(rootUri));
-      var dir = Directory(resolved.toFilePath());
-      // `rootUri` may point at `lib/`; walk up at most a few levels to find the
-      // directory that actually contains the package's `pubspec.yaml`.
-      for (var i = 0; i < 3; i++) {
-        if (File(path.join(dir.path, 'pubspec.yaml')).existsSync()) {
-          return dir.path;
-        }
-        final parent = dir.parent;
-        if (parent.path == dir.path) break;
-        dir = parent;
-      }
-      return dir.path;
-    }
-  } catch (_) {
-    // ignore — fall through to the caller's StateError
-  }
-  return null;
-}
-
 bool _isTempPath(String p) {
   final lower = p.toLowerCase();
   final systemTempLower = Directory.systemTemp.path.toLowerCase();
@@ -183,7 +130,6 @@ bool _isTempPath(String p) {
 /// the VPC generators. Both monorepo packages are wired in via path deps so
 /// the fixture mirrors a real Flutter app consuming zuraffa + zuraffa_flutter.
 Future<void> writeFlutterPubspec(VpcWorkspace workspace) async {
-  final coreRoot = _packageRoot('zuraffa');
   final flutterRoot = _packageRoot('zuraffa_flutter');
   final content = '''
 name: zuraffa_vpc_test_app
@@ -194,8 +140,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  zuraffa:
-    path: ${path.normalize(coreRoot)}
+  zuraffa: ^6.0.0
   zuraffa_flutter:
     path: ${path.normalize(flutterRoot)}
 ''';
