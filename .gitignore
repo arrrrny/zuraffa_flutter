@@ -2,3 +2,5 @@
 .dart_tool/
 coverage/
 *.iml
+build/
+.kimi-code/
