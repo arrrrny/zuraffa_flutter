@@ -97,7 +97,7 @@ void main() {
   });
 }
 
-/// Scaffolds a minimal entity file at the canonical v5 location
+/// Scaffolds a minimal entity file at the canonical v6 location
 /// `lib/src/domain/entities/<snake>/<snake>.dart` so that
 /// `CommonPatterns.entityImports`' filesystem resolver finds it.
 Future<void> _scaffoldEntity(String outputDir, String entityName) async {

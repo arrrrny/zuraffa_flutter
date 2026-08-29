@@ -9,7 +9,7 @@
 
 `zuraffa_flutter` is the Flutter UI layer for [Zuraffa](https://pub.dev/packages/zuraffa) — views, controllers, presenters, shells, xray, and state widgets, generated from the same entity-first architecture as the core package. It **re-exports the entire pure-Dart core** (`zuraffa`), so depending on `zuraffa_flutter` gives you the full framework through a single import. It is published in lockstep with the core: every `zuraffa_flutter` release shares the core's version number.
 
-Zuraffa v5 standardizes code generation around one canonical workflow:
+Zuraffa v6 standardizes code generation around one canonical workflow:
 
 1. `zfa entity create`
 2. `zfa make`
@@ -72,13 +72,13 @@ dev_dependencies:
 
 ---
 
-## Quick Start: the canonical v5 flow
+## Quick Start: the canonical v6 flow
 
 > The `zfa` workflow below is the shared core-zuraffa codegen that produces **both** the core architecture and the Flutter UI layer that `zuraffa_flutter` wraps.
 
 ### 1. Create an entity
 
-Entities are always generated under `lib/src/domain/entities` in v5.
+Entities are always generated under `lib/src/domain/entities` in v6.
 
 ```bash
 zfa entity create -n Product \
@@ -114,11 +114,11 @@ Use `zfa build` instead of calling `build_runner` directly in docs and agent wor
 
 ---
 
-## Core v5 commands
+## Core v6 commands
 
 > These commands are provided by the core `zuraffa` CLI.
 
-| Command                | Role in v5                                 |
+| Command                | Role in v6                                 |
 | ---------------------- | ------------------------------------------ |
 | `zfa entity create`    | Define or update Zorphy entities           |
 | `zfa make`             | Canonical architecture generator           |
@@ -132,7 +132,7 @@ Use `zfa build` instead of calling `build_runner` directly in docs and agent wor
 
 ## Fixed project layout
 
-Zuraffa v5 assumes a fixed architecture root:
+Zuraffa v6 assumes a fixed architecture root:
 
 ```text
 lib/src/
@@ -161,10 +161,10 @@ lib/src/domain/entities/product/product.dart
 
 ## `.zfa.json` defaults and `.zfa/` project memory
 
-Zuraffa v5 separates **project defaults** from **project memory**:
+Zuraffa v6 separates **project defaults** from **project memory**:
 
 - **`.zfa.json`**: active project configuration such as plugin defaults and entity-first rules.
-- **`.zfa/`**: the canonical v5 project-memory model for plans, runs, decisions, blueprints, manifests, and future agent context.
+- **`.zfa/`**: the canonical v6 project-memory model for plans, runs, decisions, blueprints, manifests, and future agent context.
 
 A useful mental model for humans and AI agents is:
 
@@ -185,7 +185,7 @@ A useful mental model for humans and AI agents is:
 └── context.json
 ```
 
-During the v5 migration, some internal surfaces may still reference older storage paths. Treat the structure above as the public documentation contract going forward.
+During the v6 migration, some internal surfaces may still reference older storage paths. Treat the structure above as the public documentation contract going forward.
 
 ---
 
@@ -210,7 +210,7 @@ zfa feature scaffold Product --plan
 
 ## AI-agent contract
 
-For Zuraffa v5 projects:
+For Zuraffa v6 projects:
 
 - Generate **architecture code** with `zfa`, not by hand.
 - Create entities with `zfa entity create`.
@@ -232,19 +232,19 @@ Zuraffa owns the architecture skeleton. Human or agent implementation work shoul
 
 ## Migration notes
 
-If you are coming from pre-v5 guidance:
+If you are coming from pre-v6 guidance:
 
 - the old one-shot generator command is gone,
 - `zfa make` is now the canonical generator,
 - `zfa feature` is a wrapper, not the primary public workflow,
 - the domain root is fixed to `lib/src/domain`, and
-- v5 public docs assume Zorphy-based entities.
+- v6 public docs assume Zorphy-based entities.
 
 See `doc/MIGRATION_GUIDE.md` (in the core `zuraffa` package) for a focused migration walkthrough.
 
 ---
 
-## Mock data & prototyping (v5.1.0)
+## Mock data & prototyping (v6.1.0)
 
 ```bash
 # Generate Dart mock data
