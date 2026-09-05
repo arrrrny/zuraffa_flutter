@@ -9,10 +9,10 @@
 library;
 
 // ── Re-export everything from the pure-Dart core ─────────────────────
-// zuraffa master (via the git override for #1165) re-exports Flutter
-// state widgets that zuraffa_flutter owns; the local copies win.
-export 'package:zuraffa/zuraffa.dart'
-    hide ControlledWidget, SignalBuilder, FragmentBuilder;
+// #1179 resolved on the core side: zuraffa no longer ships or exports
+// its widget copies — zuraffa_flutter's Flutter implementations are the
+// single canonical set, so the barrel re-export needs no hides.
+export 'package:zuraffa/zuraffa.dart';
 
 // ── Presentation layer (Flutter widgets) ─────────────────────────────
 
