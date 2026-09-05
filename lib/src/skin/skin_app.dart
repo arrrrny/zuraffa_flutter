@@ -78,9 +78,12 @@ class ZuraffaSkinApp extends StatelessWidget {
     required this.binding,
     required this.viewBuilders,
     this.home,
+    this.initialRoute,
     this.theme,
     this.showViolationChrome = true,
   });
+
+  /// The route name to start on (must be declared by the contract).
 
   /// The root widget — WidgetsApp always pushes `/` on cold start (the
   /// route contract conforms it by construction); forward it here.
@@ -91,6 +94,8 @@ class ZuraffaSkinApp extends StatelessWidget {
   /// Builders for the views the contract declares, keyed by the view
   /// NAME in the contract (`routes[].view`).
   final Map<String, WidgetBuilder> viewBuilders;
+
+  final String? initialRoute;
 
   /// The root (home) widget of the app.
   final Widget? home;
@@ -120,6 +125,7 @@ class ZuraffaSkinApp extends StatelessWidget {
     final kit = SkinContractKit();
     return ZuraffaApp(
       home: home,
+      initialRoute: initialRoute,
       routes: {
         for (final route in binding.declaredRoutes)
           if (viewBuilders[route.view] != null)
