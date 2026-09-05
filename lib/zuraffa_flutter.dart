@@ -9,7 +9,10 @@
 library;
 
 // ── Re-export everything from the pure-Dart core ─────────────────────
-export 'package:zuraffa/zuraffa.dart';
+// zuraffa master (via the git override for #1165) re-exports Flutter
+// state widgets that zuraffa_flutter owns; the local copies win.
+export 'package:zuraffa/zuraffa.dart'
+    hide ControlledWidget, SignalBuilder, FragmentBuilder;
 
 // ── Presentation layer (Flutter widgets) ─────────────────────────────
 
@@ -88,3 +91,4 @@ export 'package:zuraffa_flutter/src/zuraffa_flutter_plugin.dart';
 
 /// ZuraffaControllerAccess.getController — retrieves a [Controller] from the widget tree.
 export 'package:zuraffa_flutter/src/controller_access.dart';
+export 'src/skin/skin_app.dart';
