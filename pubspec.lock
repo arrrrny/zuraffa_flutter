@@ -1205,6 +1205,7 @@ packages:
   zuraffa:
     dependency: "direct main"
     description:
+<<<<<<< Updated upstream
       path: "."
       ref: HEAD
       resolved-ref: c776162ca25fca70a24aec6b516209ca1cc89b8a
@@ -1219,6 +1220,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.0"
+=======
+      name: zuraffa
+      sha256: "0a005c436894b074b78d442ae67f76e7e40ddfc259d227c90af8e0cc6ccb70a7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.2.0"
+>>>>>>> Stashed changes
 sdks:
   dart: ">=3.11.0 <4.0.0"
   flutter: ">=3.41.0"
