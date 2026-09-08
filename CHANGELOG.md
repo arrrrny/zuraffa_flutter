@@ -1,3 +1,10 @@
+## [6.2.2] - 2026-09-08
+
+### Changed
+- Release 6.2.2, synced with `zuraffa` core 6.2.2. `zuraffa` dependency now resolves
+  from pub.dev (`^6.2.2`). Dev-only `dependency_overrides` (zuraffa git override) are
+  stripped for publishing.
+
 ## [6.2.1] - 2026-09-07
 
 ### Added
