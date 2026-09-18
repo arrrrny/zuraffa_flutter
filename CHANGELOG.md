@@ -1,3 +1,8 @@
+## [7.0.0] - 2026-09-18
+
+### Change
+- Breaking: heavy integrations are now opt-in companion packages (graphql/storage/observability); lean core
+
 ## [6.3.0] - 2026-09-14
 
 ### Change
