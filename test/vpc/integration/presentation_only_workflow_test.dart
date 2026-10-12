@@ -116,27 +116,38 @@ void main() {
       );
       expect(
         File(
-          '$outputDir/data/datasources/profile/profile_datasource.dart',
-        ).existsSync(),
-        isFalse,
-      );
-      expect(
-        File(
           '$outputDir/data/datasources/profile/profile_remote_datasource.dart',
         ).existsSync(),
         isFalse,
       );
 
-      // Check Mock files DO NOT exist (since no data layer requested)
+      // The mock lane is on (`generateMock: true`, enabled by default in
+      // zfa.json) and an explicit mock request is never a silent no-op
+      // (#770), so the mock datasource and its data fixture ARE emitted. The
+      // mock datasource imports and implements `ProfileDataSource`, so when
+      // the datasource plugin is not active MockBuilder emits that interface
+      // itself (#417) — deliberately keyed on file existence, so it holds
+      // regardless of plugin execution order. All three are expected.
       expect(
-        File('$outputDir/data/mock/profile_mock_data.dart').existsSync(),
-        isFalse,
+        File(
+          '$outputDir/data/datasources/profile/profile_datasource.dart',
+        ).existsSync(),
+        isTrue,
+        reason:
+            'MockBuilder scaffolds the interface the mock datasource '
+            'implements when the datasource plugin is not active (#417)',
       );
       expect(
         File(
           '$outputDir/data/datasources/profile/profile_mock_datasource.dart',
         ).existsSync(),
-        isFalse,
+        isTrue,
+        reason: 'generateMock is on — the mock datasource is emitted (#770)',
+      );
+      expect(
+        File('$outputDir/data/mock/profile_mock_data.dart').existsSync(),
+        isTrue,
+        reason: 'generateMock is on — the mock data fixture is emitted (#770)',
       );
 
       // Check DI files for Domain/Data layer DO NOT exist

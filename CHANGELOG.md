@@ -1,3 +1,27 @@
+## [7.1.0] - 2026-10-12
+
+### Changed
+- Tracks `zuraffa` core 7.1.0 — `--force`/`--revert` no longer duplicate provider
+  members (#1719), VPC usecase references are consistently PascalCase with no
+  suffix doubling and dry-run detects existing usecases (#1720), the route-table
+  404 probe attaches the route (#1721), plus the "Built with Zuraffa" showcase
+  (#1727).
+- `zuraffa_ui` bumped to `^0.4.0` (UINode layer; `ShadListSection.sticky`
+  opt-out).
+- `go_router` bumped to `^18.0.2`, `yaml` to `^3.1.4`, `meta` to `^1.19.0`.
+- The dev-only `dependency_overrides` block (`analyzer`, `meta`) is gone. The
+  resolution graph now picks `analyzer 14.5.0` without a pin, so the block no
+  longer has to be stripped at publish time.
+
+### Fixed
+- Corrected the two transported presentation-only VPC tests to the real
+  contract (#417/#770): `generateMock` is on by default, so the mock lane is
+  emitted and `MockBuilder` scaffolds the `DataSource` interface its mock
+  datasource implements. Those three artifacts are now asserted present, while
+  the repository / remote-datasource / domain-and-data DI assertions still hold.
+  The temporary skip workaround is gone (traced and closed in
+  arrrrny/zuraffa#1733; the test fix is arrrrny/zuraffa_flutter#19).
+
 ## [7.0.1] - 2026-09-23
 
 ### Change
