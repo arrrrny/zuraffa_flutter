@@ -35,3 +35,8 @@ dev_dependencies:
   # already in the transitive graph but are declared directly here.
   analyzer: ^14.0.0
   path: ^1.9.1
+
+# Fleet-wide xml policy: pin the override to the latest xml so graphs that
+# still transitively pull the abandoned minio (xml 6.x) resolve cleanly.
+dependency_overrides:
+  xml: 7.1.0

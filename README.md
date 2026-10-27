@@ -65,7 +65,7 @@ For code generation in your app, add the core dev dependencies as described in t
 
 ```yaml
 dev_dependencies:
-  zuraffa: ^6.1.0
+  zuraffa: ^7.2.0
   zorphy_annotation: ^1.7.0
   build_runner: ^2.4.0
 ```
