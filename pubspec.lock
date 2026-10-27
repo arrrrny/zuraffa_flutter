@@ -875,13 +875,13 @@ packages:
     source: hosted
     version: "1.1.0"
   xml:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       name: xml
-      sha256: "67f0aff7be013d107995e9b75bf4e7f2c3ef2dfdb2c8e68024bba0a7fd5756a4"
+      sha256: "0fe8cc98946def31cbcbc8734aa4067031e6f65ea3a78a508060bfed2200bfeb"
       url: "https://pub.dev"
     source: hosted
-    version: "7.0.1"
+    version: "7.1.0"
   yaml:
     dependency: "direct main"
     description:
@@ -918,18 +918,17 @@ packages:
     dependency: "direct main"
     description:
       name: zuraffa
-      sha256: e3e83fdb86b2b2ca08699e77d37b73c2752419093ae6645e8e0d9e93d22276de
+      sha256: b89bb4a0646347802d4c7b1052a626b2d0b6f956891eb9db4992325e7624b695
       url: "https://pub.dev"
     source: hosted
-    version: "7.0.1"
+    version: "7.2.0"
   zuraffa_ui:
     dependency: "direct main"
     description:
-      name: zuraffa_ui
-      sha256: d023cf1e5d56938e94b33a23916992691936db7b2394d6810f4d0e7d54527398
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.4.0"
+      path: "../zuraffa_ui"
+      relative: true
+    source: path
+    version: "7.2.0"
 sdks:
   dart: ">=3.13.0 <4.0.0"
   flutter: ">=3.47.0"
