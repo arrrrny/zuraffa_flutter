@@ -40,8 +40,3 @@ dev_dependencies:
 # still transitively pull the abandoned minio (xml 6.x) resolve cleanly.
 dependency_overrides:
   xml: 7.1.0
-  zuraffa_ui:
-    path: ../zuraffa_ui
-
-  zuraffa:
-    path: ../zuraffa
