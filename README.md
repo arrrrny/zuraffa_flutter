@@ -46,7 +46,7 @@ Add `zuraffa_flutter` to your Flutter app's `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  zuraffa_flutter: ^6.1.0
+  zuraffa_flutter: ^7.3.2
 ```
 
 That's it — `zuraffa_flutter` re-exports `zuraffa` (the pure-Dart core), so you do **not** need to list `zuraffa` separately. A single import gives you the full framework, core types and Flutter UI together:
