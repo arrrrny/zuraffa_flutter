@@ -5,18 +5,18 @@ packages:
     dependency: transitive
     description:
       name: _fe_analyzer_shared
-      sha256: "9bfb8122e2505aca17219018593c384a87166cfe860d11c7ae927e7f978eb05f"
+      sha256: "1c5591cc6f252d5f440d96ab87c03e43504be552a3fa49d7cb7563f04c51fb0a"
       url: "https://pub.dev"
     source: hosted
-    version: "110.0.0"
+    version: "111.0.0"
   analyzer:
     dependency: "direct dev"
     description:
       name: analyzer
-      sha256: "74c36179c4de542efea24c9dff78324375e4b118a2c1e14e8a7659f457947f8d"
+      sha256: "6c39bd5486a310e56217bed7cb1691377959f31be4227e41750107db7e6dd55c"
       url: "https://pub.dev"
     source: hosted
-    version: "14.6.0"
+    version: "14.7.0"
   archive:
     dependency: transitive
     description:
@@ -413,6 +413,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.0"
+  listen:
+    dependency: transitive
+    description:
+      name: listen
+      sha256: "47501a08016a43fcad79252439d723f50f14f88fa7bfd8a177e0a417e5c9e1f2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   logging:
     dependency: transitive
     description:
@@ -702,10 +710,10 @@ packages:
     dependency: transitive
     description:
       name: test_api
-      sha256: "2a122cbe059f8b610d3a5415f42e255b6c17b1f21eee1d960f31080237fb4f11"
+      sha256: "0a10344e901e5b2e63819567951cb6a06673ed6b84f40462188ff5a0c41f371f"
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.12"
+    version: "0.7.14"
   theme_extensions_builder_annotation:
     dependency: transitive
     description:
@@ -854,18 +862,18 @@ packages:
     dependency: "direct main"
     description:
       name: zuraffa
-      sha256: a846536d31a4d7f3e932ebb4f2a50913285e02490b15583c0a396e2f4e4e0a9f
+      sha256: "8aef4bccb63682b344a1c60f70c76473f931f89c158671c154fecb345b8c0b79"
       url: "https://pub.dev"
     source: hosted
-    version: "7.4.1"
+    version: "7.4.2"
   zuraffa_ui:
     dependency: "direct main"
     description:
       name: zuraffa_ui
-      sha256: a3089260503b25a3630ff00b6346f1ddfc2e07f8c794d69995748f1d5defd628
+      sha256: e4e0bd415f8ba50c4db74195d34e84478c9ace739063178b232f9b1edf40a599
       url: "https://pub.dev"
     source: hosted
-    version: "7.4.1"
+    version: "7.4.2"
 sdks:
   dart: ">=3.13.0 <4.0.0"
   flutter: ">=3.47.0"
