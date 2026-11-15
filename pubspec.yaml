@@ -41,7 +41,3 @@ dev_dependencies:
 dependency_overrides:
   xml: 7.1.0
 
-  zuraffa_ui:
-    path: ../zuraffa_ui
-  zuraffa:
-    path: ../zuraffa
