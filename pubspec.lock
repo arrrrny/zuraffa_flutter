@@ -281,10 +281,10 @@ packages:
     dependency: "direct main"
     description:
       name: go_router
-      sha256: "07089be6dc124eb9596a51b5e359c657f30a59929287f11b126c2cd13eaaece0"
+      sha256: d4105f50c438c37d0d1372b1fbf1617fe9be398b559fa29d2067756ebbd42b69
       url: "https://pub.dev"
     source: hosted
-    version: "18.1.1"
+    version: "18.1.4"
   hive_ce:
     dependency: transitive
     description:
@@ -413,6 +413,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.0"
+  listen:
+    dependency: transitive
+    description:
+      name: listen
+      sha256: "47501a08016a43fcad79252439d723f50f14f88fa7bfd8a177e0a417e5c9e1f2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   logging:
     dependency: transitive
     description:
@@ -702,10 +710,10 @@ packages:
     dependency: transitive
     description:
       name: test_api
-      sha256: "2a122cbe059f8b610d3a5415f42e255b6c17b1f21eee1d960f31080237fb4f11"
+      sha256: "0a10344e901e5b2e63819567951cb6a06673ed6b84f40462188ff5a0c41f371f"
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.12"
+    version: "0.7.14"
   theme_extensions_builder_annotation:
     dependency: transitive
     description:
@@ -854,18 +862,18 @@ packages:
     dependency: "direct main"
     description:
       name: zuraffa
-      sha256: a846536d31a4d7f3e932ebb4f2a50913285e02490b15583c0a396e2f4e4e0a9f
+      sha256: "8aef4bccb63682b344a1c60f70c76473f931f89c158671c154fecb345b8c0b79"
       url: "https://pub.dev"
     source: hosted
-    version: "7.4.1"
+    version: "7.4.2"
   zuraffa_ui:
     dependency: "direct main"
     description:
       name: zuraffa_ui
-      sha256: a3089260503b25a3630ff00b6346f1ddfc2e07f8c794d69995748f1d5defd628
+      sha256: e4e0bd415f8ba50c4db74195d34e84478c9ace739063178b232f9b1edf40a599
       url: "https://pub.dev"
     source: hosted
-    version: "7.4.1"
+    version: "7.4.2"
 sdks:
   dart: ">=3.13.0 <4.0.0"
   flutter: ">=3.47.0"
