@@ -23,6 +23,25 @@ import 'package:zuraffa/zuraffa.dart';
 ///   ZuraffaAppRunner(engine: engine),
 /// );
 /// ```
+///
+/// ## Booting with error capture
+///
+/// The snippet above boots with a bare [runApp], so a widget build error, an
+/// uncaught async error and a fire-and-forget future reach no sink: invisible
+/// in release, console-print in debug. Arm the global handlers first:
+///
+/// ```dart
+/// void main() {
+///   ZuraffaFlutterErrorCapture.install();
+///   runApp(ZuraffaAppRunner(engine: engine));
+/// }
+/// ```
+///
+/// `install()` is idempotent, so an app that re-calls `main` does not stack
+/// handlers. Once the core funnel ships (arrrrny/zuraffa#2099) the guarded boot
+/// also wraps the body in `Zuraffa.runGuarded` and passes
+/// `sink: Zuraffa.captureUncaught` to `install`, so the Dart-level and
+/// Flutter-level handlers report through one function.
 class ZuraffaAppRunner extends StatelessWidget {
   /// The bootstrapped engine whose [ZuraffaEngine.masterRouteMap]
   /// supplies the route table.
