@@ -73,6 +73,10 @@ export 'package:zuraffa_flutter/src/module/route_builder.dart';
 /// Minimal widget that resolves routes from a ZuraffaEngine.
 export 'package:zuraffa_flutter/src/module/app_runner.dart';
 
+/// ZuraffaFlutterErrorCapture — arms FlutterError.onError and
+/// PlatformDispatcher.onError for the uncaught-error funnel.
+export 'package:zuraffa_flutter/src/module/flutter_error_capture.dart';
+
 // ── Routing (go_router) ───────────────────────────────────────────────
 
 /// Re-export [go_router](https://pub.dev/packages/go_router) so Flutter apps
