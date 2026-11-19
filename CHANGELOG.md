@@ -1,3 +1,10 @@
+## 7.5.1 - 2026-11-19
+
+Release 7.5.1: publishes `ZuraffaFlutterErrorCapture.install()` (#25) — the
+Flutter half of the uncaught-error capture contract. Purely additive patch
+release: a consumer resolving `^7.5.0` can now reach the capture API without a
+master pin (#2106).
+
 ## 7.5.0 - 2026-11-15
 
 Release 7.5.0: Signal-backed view-state migration template with SignalScope ownership (#2076); signal listener/subscription cleanup on eager-delivery throw (#2081, #2083); UseCase/StreamUseCase catch-all SEVERE logs now carry the cause (#2077, #2079); dependencies upgraded and pinned to latest resolvable.
