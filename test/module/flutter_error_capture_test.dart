@@ -117,7 +117,10 @@ void main() {
       var previousCalls = 0;
       final previous = FlutterError.onError;
       FlutterError.onError = (_) => previousCalls++;
-      addTearDown(() => FlutterError.onError = previous);
+      addTearDown(() {
+        ZuraffaFlutterErrorCapture.restore();
+        FlutterError.onError = previous;
+      });
 
       ZuraffaFlutterErrorCapture.install(sink: (_, __, {context}) {});
       FlutterError.reportError(
@@ -132,7 +135,10 @@ void main() {
     test('a null previous handler installs cleanly', () {
       final previous = FlutterError.onError;
       FlutterError.onError = null;
-      addTearDown(() => FlutterError.onError = previous);
+      addTearDown(() {
+        ZuraffaFlutterErrorCapture.restore();
+        FlutterError.onError = previous;
+      });
 
       final seen = <Object?>[];
       ZuraffaFlutterErrorCapture.install(
@@ -190,7 +196,10 @@ void main() {
       var previousCalls = 0;
       final previous = FlutterError.onError;
       FlutterError.onError = (_) => previousCalls++;
-      addTearDown(() => FlutterError.onError = previous);
+      addTearDown(() {
+        ZuraffaFlutterErrorCapture.restore();
+        FlutterError.onError = previous;
+      });
 
       final first = ZuraffaFlutterErrorCapture.install(
         sink: (_, __, {context}) {},
@@ -233,6 +242,25 @@ void main() {
       final seen = <Object?>[];
       ZuraffaFlutterErrorCapture.install();
       ZuraffaFlutterErrorCapture.restore();
+      ZuraffaFlutterErrorCapture.install(
+        sink: (error, _, {context}) => seen.add(error),
+      );
+
+      FlutterError.reportError(
+        FlutterErrorDetails(exception: StateError('boom')),
+      );
+
+      expect(seen.single, isA<StateError>());
+    });
+
+    test('restoring through the handle lets the next install() re-arm', () {
+      final seen = <Object?>[];
+      final handle = ZuraffaFlutterErrorCapture.install();
+      handle.restore();
+
+      // The handle's restore() must clear the live session so the next
+      // install() arms a fresh capture instead of handing back the restored
+      // handle (which would leave capture silently disabled).
       ZuraffaFlutterErrorCapture.install(
         sink: (error, _, {context}) => seen.add(error),
       );

@@ -138,13 +138,24 @@ class ZuraffaFlutterErrorCaptureHandle {
     _previousFlutterOnError = previous;
 
     FlutterError.onError = (details) {
-      _sink(
-        details.exception,
-        details.stack ?? StackTrace.empty,
-        context:
-            'Uncaught FlutterError: '
-            '${details.library ?? 'framework'}: ${details.summary}',
-      );
+      try {
+        _sink(
+          details.exception,
+          details.stack ?? StackTrace.empty,
+          context:
+              'Uncaught FlutterError: '
+              '${details.library ?? 'framework'}: ${details.summary}',
+        );
+      } on Object catch (sinkError, sinkStack) {
+        // A caller-supplied sink must not be able to mask the error being
+        // reported: a throw here would skip the previous handler and replace
+        // the original error with the sink's own.
+        logging.Logger.root.severe(
+          'ZuraffaFlutterErrorCapture sink threw',
+          sinkError,
+          sinkStack,
+        );
+      }
       // Dev tools and `FlutterError.presentError` depend on the previous
       // handler still running, so it is chained rather than dropped.
       previous?.call(details);
@@ -156,7 +167,15 @@ class ZuraffaFlutterErrorCaptureHandle {
     // capture exists to prevent.
     _previousPlatformOnError = PlatformDispatcher.instance.onError;
     PlatformDispatcher.instance.onError = (error, stackTrace) {
-      _sink(error, stackTrace, context: 'Uncaught platform error');
+      try {
+        _sink(error, stackTrace, context: 'Uncaught platform error');
+      } on Object catch (sinkError, sinkStack) {
+        logging.Logger.root.severe(
+          'ZuraffaFlutterErrorCapture sink threw',
+          sinkError,
+          sinkStack,
+        );
+      }
       return true;
     };
   }
@@ -167,6 +186,13 @@ class ZuraffaFlutterErrorCaptureHandle {
   void restore() {
     if (_restored) return;
     _restored = true;
+    // If this handle is the live session, clear it so the next `install()`
+    // arms a fresh capture rather than handing this restored handle back
+    // (which would leave capture disabled). Only the current session is
+    // cleared — a stale handle restoring itself cannot wipe a newer one.
+    if (ZuraffaFlutterErrorCapture._session == this) {
+      ZuraffaFlutterErrorCapture._session = null;
+    }
     FlutterError.onError = _previousFlutterOnError;
     PlatformDispatcher.instance.onError = _previousPlatformOnError;
   }
