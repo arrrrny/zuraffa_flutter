@@ -1,6 +1,6 @@
 name: zuraffa_flutter
 description: Flutter UI layer for Zuraffa — views, controllers, presenters, shells, xray, and state widgets.
-version: 7.6.0
+version: 7.6.1
 homepage: https://zuraffa.com
 repository: https://github.com/arrrrny/zuraffa_flutter
 issue_tracker: https://github.com/arrrrny/zuraffa_flutter/issues
@@ -26,8 +26,8 @@ dependencies:
   # on the same package at the same constraint; declaring it here keeps the
   # call off a transitive edge.
   logging: ^1.3.0
-  zuraffa: ^7.6.0
-  zuraffa_ui: ^7.6.0
+  zuraffa: ^7.6.1
+  zuraffa_ui: ^7.6.1
   yaml: ^3.1.4
   meta: ^1.19.0
 
@@ -45,5 +45,6 @@ dev_dependencies:
 # still transitively pull the abandoned minio (xml 6.x) resolve cleanly.
 dependency_overrides:
   xml: 7.1.0
+
 
 

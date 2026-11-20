@@ -149,10 +149,10 @@ packages:
     dependency: transitive
     description:
       name: cupertino_ui
-      sha256: "369e39a1c5c030a6212589c3da1809920b1c2cfade7b02aade7695bfa4b88c3a"
+      sha256: c3eaf7f5bdfee36deb0b14a4cbf7602f1b6b8d8b8576b81f38fc08c25881c94c
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.6"
+    version: "1.1.7"
   dart_style:
     dependency: transitive
     description:
@@ -465,10 +465,10 @@ packages:
     dependency: transitive
     description:
       name: material_ui
-      sha256: "474c135fd46b56ff1d35ca982155e8863d28fbc6464d1192acf4ee53a738680e"
+      sha256: a6b19012df437a356cbc01f8ea22a105e07194c47c9a6009da0032a0ce35c4ab
       url: "https://pub.dev"
     source: hosted
-    version: "1.11.0"
+    version: "1.11.1"
   meta:
     dependency: "direct main"
     description:
@@ -854,34 +854,34 @@ packages:
     dependency: transitive
     description:
       name: zorphy
-      sha256: "29a3e10383b40286cedd8a4a82342f032c19d0993fa0e3518911d823e04b86fe"
+      sha256: a2b400798c6c33881ad326fffc353eea56418d9a7fb314906ba881c7ddd14ebd
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.6"
+    version: "2.5.1"
   zorphy_annotation:
     dependency: transitive
     description:
       name: zorphy_annotation
-      sha256: "402d08a0f9a02de6a832bc6ac714b9f85c5b4e10a889e6d159644cd8faa11b35"
+      sha256: "8b1879ce2b74332b8f909d369b955f5081d4ca9e2a96dc1ec3fc66721bfb36ba"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.6"
+    version: "2.5.1"
   zuraffa:
     dependency: "direct main"
     description:
       name: zuraffa
-      sha256: da5ae4ae9bb3e206435393ce9309ca31901b3c178d52fa14d5d6860096c59c33
+      sha256: ef610afd23f6a4c86ce1ad904db869265b9f8050bec145f907c8b6c8a6d488f6
       url: "https://pub.dev"
     source: hosted
-    version: "7.5.0"
+    version: "7.6.0"
   zuraffa_ui:
     dependency: "direct main"
     description:
       name: zuraffa_ui
-      sha256: fa850dbeae8565de1821d57e3f3e8d16a3421f4ce7e41c497de7062ff0705d4d
+      sha256: cf66020802483c67eef5b965c5cc30754152db771a5cb2019d5206f828690a7f
       url: "https://pub.dev"
     source: hosted
-    version: "7.5.0"
+    version: "7.6.0"
 sdks:
   dart: ">=3.13.0 <4.0.0"
   flutter: ">=3.47.0"
