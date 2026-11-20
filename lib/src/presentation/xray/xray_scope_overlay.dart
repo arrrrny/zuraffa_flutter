@@ -278,12 +278,12 @@ class _NeonBorderPainter extends CustomPainter {
     final paint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2
-      ..color = isEnabled ? color : color.withOpacity(0.4);
+      ..color = isEnabled ? color : color.withValues(alpha: 0.4);
 
     final glowPaint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 6
-      ..color = XRayColors.glowFor(color).withOpacity(0.3)
+      ..color = XRayColors.glowFor(color).withValues(alpha: 0.3)
       ..maskFilter = const MaskFilter.blur(BlurStyle.outer, 4);
 
     canvas.drawRect(rect, glowPaint);

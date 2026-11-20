@@ -3,7 +3,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'xray_mock_entry.dart';
 import 'xray_mode.dart';
@@ -297,9 +297,9 @@ class _XRayControlDeckState extends State<XRayControlDeck>
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
         decoration: BoxDecoration(
-          color: color.withOpacity(0.15),
+          color: color.withValues(alpha: 0.15),
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: color.withOpacity(0.5), width: 1),
+          border: Border.all(color: color.withValues(alpha: 0.5), width: 1),
         ),
         child: Row(
           children: [

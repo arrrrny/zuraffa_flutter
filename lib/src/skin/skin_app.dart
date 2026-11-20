@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:zuraffa/skin.dart';
 import 'package:zuraffa_ui/src/identified/app/zuraffa_app.dart';
 import 'package:zuraffa_ui/src/identified/theme/zfa_theme.dart';

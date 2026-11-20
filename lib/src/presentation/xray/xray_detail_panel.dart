@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'xray_node_metadata.dart';
 
@@ -68,7 +68,7 @@ class XRayDetailPanel extends StatelessWidget {
                   border: Border.all(color: viewColor, width: 2),
                   boxShadow: [
                     BoxShadow(
-                      color: viewColor.withOpacity(0.3),
+                      color: viewColor.withValues(alpha: 0.3),
                       blurRadius: 12,
                       spreadRadius: 2,
                     ),
