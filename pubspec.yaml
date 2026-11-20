@@ -1,5 +1,5 @@
 name: zuraffa_flutter
-description: Flutter UI layer for Zuraffa — views, controllers, presenters, shells, xray, and state widgets.
+description: Flutter UI layer for Zuraffa - views, controllers, presenters, shells, xray, and state widgets.
 version: 7.6.1
 homepage: https://zuraffa.com
 repository: https://github.com/arrrrny/zuraffa_flutter
